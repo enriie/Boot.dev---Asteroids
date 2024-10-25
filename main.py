@@ -2,8 +2,8 @@ from constants import *
 from player import Player
 import pygame
 
-updateable = pygame.sprite.Group()
-renderable = pygame.sprite.Group()
+updatable = pygame.sprite.Group()
+drawable = pygame.sprite.Group()
 
 def main():
     print("Starting asteroids!")
@@ -25,10 +25,10 @@ def main():
                 return
         screen.fill("black")
 
-        for obj in updateable:
+        for obj in updatable:
             obj.update(delta)
         
-        for obj in renderable:
+        for obj in drawable:
             obj.draw(screen)
 
         pygame.display.flip()
