@@ -45,10 +45,19 @@ def main():
             obj.draw(screen)
         
         for ast in asteroids:
+            for projectile in projectiles:
+                if projectile.collision_check(ast):
+                    projectile.kill()
+                    ast.split()
+            
             if player.collision_check(ast):
                 print("Game over!")
                 sys.exit()
                 return
+        
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_q]:
+            print("Asteroids: %d" % len(asteroids))
 
         pygame.display.flip()
         delta = clock.tick(60) / 1000
