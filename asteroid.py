@@ -24,11 +24,11 @@ class Asteroid(CircleShape):
     def update(self, delta):
         self.position += self.velocity * delta
 
-        # if self.position.x < 0 - ASTEROID_MAX_RADIUS or self.position.x > SCREEN_WIDTH + ASTEROID_MAX_RADIUS:
-        #     self.kill()
+        if self.position.x < 0 - ASTEROID_MAX_RADIUS or self.position.x > SCREEN_WIDTH + ASTEROID_MAX_RADIUS:
+            self.kill()
 
-        # if self.position.y < 0 - ASTEROID_MAX_RADIUS or self.position.y > SCREEN_HEIGHT + ASTEROID_MAX_RADIUS:
-        #     self.kill()
+        if self.position.y < 0 - ASTEROID_MAX_RADIUS or self.position.y > SCREEN_HEIGHT + ASTEROID_MAX_RADIUS:
+            self.kill()
 
     def draw(self, screen):
         pygame.draw.circle(screen, "white", self.position, self.radius, 2)

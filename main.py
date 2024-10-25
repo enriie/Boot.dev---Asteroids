@@ -31,6 +31,8 @@ def main():
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     asteroidField = AsteroidField()
 
+    points = 0
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -49,6 +51,8 @@ def main():
                 if projectile.collision_check(ast):
                     projectile.kill()
                     ast.split()
+                    
+                    points += 1
             
             if player.collision_check(ast):
                 print("Game over!")
