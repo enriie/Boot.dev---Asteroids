@@ -9,6 +9,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Boot.dev / Asteroids")
     clock = pygame.time.Clock()
+    delta = 0
 
     while True:
         for event in pygame.event.get():
@@ -17,6 +18,7 @@ def main():
                 return
         
         pygame.display.flip()
+        delta = clock.tick(60) / 1000
 
 if __name__ == "__main__":
     main()
