@@ -2,6 +2,9 @@ from constants import *
 from player import Player
 import pygame
 
+updateable = pygame.sprite.Group()
+renderable = pygame.sprite.Group()
+
 def main():
     print("Starting asteroids!")
     print("Screen width: %d\nScreen height: %d" % (SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -12,6 +15,7 @@ def main():
     clock = pygame.time.Clock()
     delta = 0
 
+    Player.containers = (updateable, renderable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     while True:
@@ -21,8 +25,11 @@ def main():
                 return
         screen.fill("black")
 
-        player.draw(screen)
-        player.update(delta)
+        for obj in updateable:
+            obj.update(delta)
+        
+        for obj in renderable:
+            obj.draw(screen)
 
         pygame.display.flip()
         delta = clock.tick(60) / 1000
